@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h class="text-center display-3 py-5">Partidos</h>
+            <ul class="list-group">
+                {% for partidos in partidos %}
+                <a class="list-group-item" href="{% url 'partidos_detail' partidos.id %}">
+                    <header class="d-flex justify-content-between">
+                        {% if partidos.important %}
+                        <h1 class="fw-bold text-success">{{partidos.title}}</h1>                                              
+                        {% else %}
+                         <h1 class="fw-bold">{{partidos.title}} </h1>   
+                        {% endif %}
+                        <p>{{partidos.user.username}}</p> 
+                    </header>                    
+                </a>
+            
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</main>
+{% endblock %}      
